@@ -1,0 +1,15 @@
+.forecast {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-color: #22a39c;
+    width: 80%;
+    padding: 1rem;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

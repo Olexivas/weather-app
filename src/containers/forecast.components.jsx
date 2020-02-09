@@ -1,18 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import ForecastItem from '../components/forecast-item/forecast-item.component'
+import ForecastItem from "../components/forecast-item/forecast-item.component";
 
-const Forecast = () => {
-    return (
-        <div className="forecast">
-            <ForecastItem />
-            <ForecastItem />
-            <ForecastItem />
-            <ForecastItem />
-            <ForecastItem />
-            <ForecastItem />
-        </div>
-    )
-}
+const Forecast = ({forecast}) => {
+  return (
+    <div className="forecast">
+      {forecast.filter((item, index) => index < 5).map(item => <ForecastItem item={item} />)}
+    </div>
+  );
+};
 
-export default Forecast
+export default Forecast;

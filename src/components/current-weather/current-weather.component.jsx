@@ -1,18 +1,21 @@
 import React from "react";
 
-import './current-weather.styles.scss'
+import "./current-weather.styles.scss";
 
-const CurrentWeather = () => {
+const CurrentWeather = ({currentWeather: {city, temp, icon, alt, main}}) => {
   return (
     <div className="current-weather">
       <div className="current-weather__details">
         <div className="icon">
-          <img src="" alt="" />
+          <img
+            src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+            alt={alt}
+          />
         </div>
-        <div className="temp">0 deg</div>
+        <div className="temp">{temp && parseInt(temp)}</div>
       </div>
-      <div className="main">Clouds</div>
-      <div className="city">Seoul</div>
+      <div className="main">{main}</div>
+      <div className="city">{city}</div>
     </div>
   );
 };

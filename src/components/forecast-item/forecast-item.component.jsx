@@ -1,15 +1,23 @@
 import React from "react";
 
-import './forecast-item.styles.scss'
+import moment from 'moment'
 
-const ForecastItem = () => {
+import "./forecast-item.styles.scss";
+
+const ForecastItem = ({
+  item: {
+    dt_txt,
+    main: { temp },
+    weather
+  }
+}) => {
   return (
     <div className="forecast__item">
-      <div className="date">Sun, 12PM</div>
+      <div className="date">{moment(dt_txt).format('ddd, HH:mm')}</div>
       <div className="icon">
-        <img src="" alt="" />
+        <img src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`} alt="" />
       </div>
-      <div className="temp">0 deg</div>
+      <div className="temp">{temp && parseInt(temp)}</div>
     </div>
   );
 };
