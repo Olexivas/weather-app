@@ -25,17 +25,16 @@ function App() {
       `https://api.openweathermap.org/data/2.5/forecast?q=kryvyi rih,ua&appid=${API_KEY}&units=metric`
     )
       .then(res => res.json())
-      .then(weather => {
+      .then(({ city: { name }, list }) => {
         setCurrentWeather({
-          city: weather.city.name,
-          temp: weather.list[0].main.temp,
-          icon: weather.list[0].weather[0].icon,
-          alt: weather.list[0].weather[0].description,
-          main: weather.list[0].weather[0].main
+          city: name,
+          temp: list[0].main.temp,
+          icon: list[0].weather[0].icon,
+          alt: list[0].weather[0].description,
+          main: list[0].weather[0].main
         });
-        setForecast(weather.list);
-        setDetails(weather.list[0].main)
-        console.log(weather);
+        setForecast(list);
+        setDetails(list[0].main);
       });
   }, []);
 
@@ -43,7 +42,7 @@ function App() {
     <div className="app">
       <CurrentWeather currentWeather={currentWeather} />
       <Forecast forecast={forecast} />
-      <WeatherDetails details={details}/>
+      <WeatherDetails details={details} />
     </div>
   );
 }
